@@ -1,5 +1,5 @@
-In progress.
-
+## Sitemap (in progress)
+```tree
 Home (Main Page)
 ├── Animated Design Intro
 ├── Stylised Resume
@@ -22,3 +22,11 @@ Home (Main Page)
 │   └── About me
 │       ├── Contact
 │       └── GitHub page
+```
+## Docker compose build, languages & frameworks
+### Dev
+- nginx container with HMTL/Pico CSS
+- node container with TypeScript
+### Prod
+- nginx container with HTML/Pico CSS/JS
+**A multi stage build compile TypeScript, sanitize CSS and minify.**

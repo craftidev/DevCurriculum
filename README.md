@@ -1,32 +1,31 @@
 ```tree
-project-name/
-├── README.md
-├── .gitignore
-├── frontend/
-│   ├── sitemap_tree.md
-│   ├── sitemap.xml
-│   ├── index.html
-│   ├── css/
-│   │   └── styles.css
-│   ├── js/
-│   │   └── main.js
-│   └── assets/
-│       └── images/
-├── backend/
-│   ├── java-api/
-│   │   └── (Documentation and live display/filter)
-│   ├── php-crud/
-│   │   └── (Auth / db display & edit form)
-│   └── python-stats/
-│       └── (git analysis, graph and filtering)
-├── database/
-│   └── (Database scripts and configuration)
-├── game/
-│   └── (JavaScript pong game with environement collisions)
-├── docker/
-│   └── (Docker configuration files)
-└── deployment/
-    └── (Deployment scripts and configuration)
+📦DevCurriculum
+ ┣ 📂.vscode
+ ┃ ┗ Personal preferences
+ ┣ 📂api
+ ┃ ┗ Java API
+ ┣ 📂backend
+ ┃ ┗ PHP
+ ┣ 📂database
+ ┃ ┣ 📂data
+ ┃ ┃ ┗ Persistent data of MariaDB (only)
+ ┃ ┗ 📂schema
+ ┃   ┗ initialisation sql queries
+ ┣ 📂docker
+ ┃ ┗ 📜docker compose dev/prod files
+ ┣ 📂frontend
+ ┃ ┣ 📂static
+ ┃ ┃ ┣ 📂css
+ ┃ ┃ ┃ ┗ Pico CSS
+ ┃ ┃ ┗ HTML
+ ┃ ┣ 📂typescript
+ ┃ ┃ ┗ TypeScript
+ ┃ ┗ 📜sitemap.tree
+ ┣ 📂python
+ ┃ ┗ 📜python data analysis
+ ┣ 📜.editorconfig
+ ┣ 📜.gitignore
+ ┗ 📜README.md
 ```
 
 # DevCurriculum intro
@@ -70,8 +69,8 @@ Front/Back end are connected using AJAX.
 ### Project Planning:
 - [x] Outline the structure of the website and the technologies used.
 - [x] First design/navigation flow prototype.
-- [ ] Set up a Git repository for the project.
-- [ ] Learn the basics of Docker and Docker Compose.
+- [x] Set up a Git repository for the project.
+- [x] Learn the basics of Docker and Docker Compose.
 - [ ] Create initial Dockerfiles and Docker Compose configuration for local development.
 
 ## Phase 2: Static Content Development (Weeks 2-3)

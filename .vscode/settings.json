@@ -1,0 +1,5 @@
+{
+    // intellisense autocomplete
+    "typescript.suggest.paths": false,
+    "javascript.suggest.paths": false
+}
