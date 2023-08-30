@@ -71,7 +71,7 @@ Front/Back end are connected using AJAX.
 - [x] First design/navigation flow prototype.
 - [x] Set up a Git repository for the project.
 - [x] Learn the basics of Docker and Docker Compose.
-- [ ] Create initial Dockerfiles and Docker Compose configuration for local development.
+- [x] Create initial Dockerfiles and Docker Compose configuration for local development.
 
 ## Phase 2: Static Content Development (Weeks 2-3)
 ### HTML/CSS Resume:
