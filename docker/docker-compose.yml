@@ -1,0 +1,106 @@
+# For dev environement
+# TODO create another compose for prod:
+# change all the volumes behavior, no source code bind
+# Keep only data of DB, logs, cache, assets in persistence
+# No port redirection except front nginx
+# TODO wait shell script https://github.com/vishnubob/wait-for-it
+
+version: "3.8"
+
+# networks: use the default network
+
+services:
+  # mariadb:
+  #   image: mariadb:lts-jammy # TODO var env MYSQL_ROOT_PASSWORD _DATABASE _USER _PASSWORD
+  #   container_name: devcurriculum-mariadb-container
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #   volumes:
+  #     - ../database/data:/database
+  #     - ../database/schema:/database/docker-entrypoint-initdb.d/
+  #   workdir: /database
+  #   build:
+  #     context: ../database
+
+  # python_analytics:
+  #   image: python:slim-bullseye
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ../python:/python
+  #   workdir: /python
+  #   build:
+  #     context: ../python
+
+  # php_backend:
+  #   image: php:8.2.9-fpm-alpine3.18
+  #   ports:
+  #     - "800:80"
+  #   volumes:
+  #     - ../backend:/var/www/html
+  #   workdir: /var/www/html
+  #   build:
+  #     context: ../backend
+  #   depends_on:
+  #     - mariadb
+
+  # java_api: # TODO key/token env var
+  #   image: amazoncorretto:17.alpine-amd64 # for dev only, at prod: compile/alpine/JRE
+  #   ports:
+  #     - "3700:3700"
+  #   volumes:
+  #     - ../api:/api
+  #   workdir: /api
+  #   build:
+  #     context: ../api
+  #   depends_on:
+  #     - mariadb
+
+  web_frontend:
+    image: devcurriculum_nginx:1
+    container_name: devcurriculum_web_frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ../frontend/static:/usr/share/nginx/html
+      - type: volume
+        source: compiled_typescript
+        target: /usr/share/nginx/html/dist
+    build:
+      context: ../frontend/static
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # depends_on:
+    #   - php_backend
+    #   - java_api
+    #   - python_analytics
+
+  node_frontend: 
+    image: devcurriculum_node:1
+    container_name: devcurriculum_node_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../frontend:/home/node/app
+      - /home/node/app/typescript/node_modules
+      - type: volume
+        source: compiled_typescript
+        target: /home/node/app/typescript/dist
+    build:
+      context: ../frontend/typescript
+    depends_on:
+      # - php_backend
+      # - java_api
+      # - python_analytics
+      - web_frontend
+
+volumes:
+  compiled_typescript:

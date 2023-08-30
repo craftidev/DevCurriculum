@@ -1,17 +1,19 @@
 FROM node:lts-bullseye
 
-# Avoid exec as root
-RUN  useradd -ms  /bin/bash node
-USER node
-
 # Source
-COPY . /node
-WORKDIR /node
+WORKDIR /home/node/app/typescript
+
+# Run as non-root
+# RUN groupadd -r nodegroup && \
+#     usermod -aG nodegroup node && \
+#     chown -R node:nodegroup /home/node
+# USER node
 
 # Requirements/config
-RUN npm install --no-cache
-# TODO need nodemon or webpack-dev-server etc.
+COPY package.json .
+RUN npm install -g npm@9.8.1 && \
+    npm install
+COPY container_start.sh container_start.sh
 
 # Init
-RUN echo "### Node init ###"
-CMD ["npm", "start"]
+CMD ["sh", "./container_start.sh"]
