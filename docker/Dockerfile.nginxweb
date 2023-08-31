@@ -1,0 +1,13 @@
+FROM nginx:stable-bullseye
+
+# Source
+WORKDIR /usr/share/nginx/html
+
+# Requirements/config
+# ? maybe need a customise nginx.conf in the future
+
+# nginx already run as non-root by default
+
+# Init
+RUN echo "### Nginx init ###"
+# Use default init

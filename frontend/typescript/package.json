@@ -1,8 +1,0 @@
-{
-    "name": "devcurriculum-live-reloading",
-    "version": "1.0.0",
-    "devDependencies": {
-        "browser-sync": "^2.29.3",
-        "typescript": "^5.2.2"
-    }
-}

@@ -19,7 +19,7 @@ Contain all you need to run docker images and containers with proper configurati
 - node:lts-bullseye
 ### Difference with prod
 - For dev environement.
-- It runs node seperatly from nginx for live editing.
+- It runs node seperatly from nginx for live editing/compiling.
 - Container source code synced with local source code
 - Run a mariaDB container.
 - Run a full JDK container.
@@ -36,3 +36,6 @@ Contain all you need to run docker images and containers with proper configurati
 - Use multi stage for Java, compiling and then runing only on alpine with JRE.
 - Only sync relevent data for mariaDB and frontend assets
 - Remove source code after copying on containers
+- Keep only data of DB, logs, cache, assets in persistence
+- No port redirection except front nginx
+- wait shell script https://github.com/vishnubob/wait-for-it

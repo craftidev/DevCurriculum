@@ -1,0 +1,16 @@
+FROM node:lts-bullseye
+
+# Source
+WORKDIR /home/node/app
+
+# Requirements/config
+COPY ./frontend/node/package*.json ./
+RUN npm install -g npm@latest && \
+    npm install
+
+# run as non-root with default image user predefined
+USER node
+
+# Init
+RUN echo "### Node init ###"
+# Use package.json to run Vite js
