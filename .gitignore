@@ -1,3 +1,8 @@
-**/_exclude/
-**/node_modules/
 **/.vscode/
+/_exclude
+/frontend/node/node_modules/
+/frontend/node/dist/
+/docker/logs/nginx
+/docker/logs/node
+*.crt
+*.key
