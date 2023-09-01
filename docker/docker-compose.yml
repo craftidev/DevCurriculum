@@ -62,22 +62,16 @@ services:
     build:
       context: ../
       dockerfile: ./docker/Dockerfile.nginxweb
+    volumes:
+      - ./logs/nginx:/var/log/nginx
     ports:
       - "80:80"
-    volumes:
-      - /usr/share/nginx/html
-      - type: volume
-        source: compiled_node
-        target: /usr/share/nginx/html
+      - "443:443"
     healthcheck:
       test: ["CMD", "nginx", "-t"]
       interval: 30s
       timeout: 10s
       retries: 3
-    # depends_on:
-    #   - php
-    #   - java
-    #   - python
 
   node: 
     image: devcurriculum_node:1.1
@@ -86,18 +80,12 @@ services:
       - "3000:3000"
     volumes:
       - ../frontend/node:/home/node/app
-      - /home/node/app/node_modules
-      - type: volume
-        source: compiled_node
-        target: /home/node/app/node/public
+      - node_modules_volume:/home/node/app/node_modules
+      - node_dist_volume:/home/node/app/dist
     build:
       context: ../
       dockerfile: docker/Dockerfile.node
-    depends_on:
-      # - php
-      # - java
-      # - python
-      - nginx
 
 volumes:
-  compiled_node:
+  node_modules_volume:
+  node_dist_volume:

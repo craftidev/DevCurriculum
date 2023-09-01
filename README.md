@@ -1,31 +1,28 @@
+**For installation, see README of docker folder.**
+
 ```tree
 📦DevCurriculum
- ┣ 📂.vscode
- ┃ ┗ Personal preferences
- ┣ 📂api
- ┃ ┗ Java API
  ┣ 📂backend
- ┃ ┗ PHP
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ Java API
+ ┃ ┣ 📂php
+ ┃ ┃ ┗ CRUD PHP/MariaDB
+ ┃ ┗ 📂python
+ ┃   ┗ Analytics
  ┣ 📂database
  ┃ ┣ 📂data
- ┃ ┃ ┗ Persistent data of MariaDB (only)
  ┃ ┗ 📂schema
- ┃   ┗ initialisation sql queries
  ┣ 📂docker
- ┃ ┗ 📜docker compose dev/prod files
- ┣ 📂frontend
- ┃ ┣ 📂static
- ┃ ┃ ┣ 📂css
- ┃ ┃ ┃ ┗ Pico CSS
- ┃ ┃ ┗ HTML
- ┃ ┣ 📂typescript
- ┃ ┃ ┗ TypeScript
- ┃ ┗ 📜sitemap.tree
- ┣ 📂python
- ┃ ┗ 📜python data analysis
- ┣ 📜.editorconfig
- ┣ 📜.gitignore
- ┗ 📜README.md
+ ┃ ┣ 📜.env
+ ┃ ┣ 📜Dockerfiles
+ ┃ ┗ 📜docker-compose.yml
+ ┗ 📂frontend
+   ┗ 📂node
+     ┣ Vite Bundler
+     ┣ 📂public
+     ┃ ┗ Static compiled
+     ┗ 📂src
+       ┗ Vanilla TypeScript
 ```
 
 # DevCurriculum intro

@@ -1,8 +1,7 @@
 {
     "compilerOptions": {
-        "target": "ES6",
-        "module": "CommonJS",
-        "outDir": "../nginx/dist",
+        "target": "ESNext",
+        "module": "ESNext",
         "strict": true,
         "esModuleInterop": true
     },
